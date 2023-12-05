@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import in.learning.LearningProcess.bean.Mentor;
@@ -18,6 +19,7 @@ public class MentorController {
 				);
 		return mentor;
 	}
+	
 	@GetMapping("/mentorsList")
 	public List<Mentor> getMentorList(){
 		List<Mentor> mentor=new ArrayList<>();
@@ -26,5 +28,12 @@ public class MentorController {
 		mentor.add(new Mentor(3,"Prasanna","prasu@gmail.com","Agile Developer"));
 		
 		return mentor;
+	}
+	
+	//REST API with PathVariable  {id}=URI Template Variable
+	@GetMapping("/mentor/{id}/{name}")
+	public Mentor mentorPathVariable(@PathVariable("id") int mentorId,
+			@PathVariable String name) {
+		return new Mentor(mentorId,name,"naveen@gmail.com","Azure Team");
 	}
 }
