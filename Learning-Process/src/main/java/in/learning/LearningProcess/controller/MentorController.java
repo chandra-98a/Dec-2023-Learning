@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,9 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import in.learning.LearningProcess.bean.Mentor;
 
 @RestController
+@RequestMapping("/mentor")
 public class MentorController {
 
-	@GetMapping("/mentor")
+	@GetMapping
 	public ResponseEntity<Mentor> getMentor() {
 		Mentor mentor=new Mentor(
 				1,"PaviPoovamma","pavi@gmail.com","Java Developer"
@@ -41,7 +43,7 @@ public class MentorController {
 	}
 	
 	//REST API with PathVariable  {id}=URI Template Variable
-	@GetMapping("/mentor/{id}/{name}")
+	@GetMapping("/{id}/{name}")
 	public ResponseEntity<Mentor> mentorPathVariable(@PathVariable("id") int mentorId,
 			@PathVariable String name) {
 		Mentor mentor= new Mentor(mentorId,name,"naveen@gmail.com","Azure Team");
@@ -50,7 +52,7 @@ public class MentorController {
 	
 	//REST API with @RequestParam
 	//http://localhost:8080/mentor/query?id=1&name=Vasantha
-	@GetMapping("/mentor/query")
+	@GetMapping("/query")
 	public ResponseEntity<Mentor> mentorRequestVariable(@RequestParam int id,
 			@RequestParam String name) {
 		Mentor mentor= new Mentor(id,name,"ashok@gmail.com","IT team");
@@ -59,7 +61,7 @@ public class MentorController {
 	}
 	
 	//REST API with POST request
-	@PostMapping("/mentor")
+	@PostMapping
 	//@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Mentor> createMentor(@RequestBody Mentor mentor) {
 		System.out.println(mentor.getId());
@@ -71,7 +73,7 @@ public class MentorController {
 	
 	
 	//REST API with PUT request
-	@PutMapping("/mentor/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<Mentor> updateMentor(@RequestBody Mentor mentor,@PathVariable int id) {
 		System.out.println(mentor.getName());
 		System.out.println(mentor.getEmail());
@@ -81,7 +83,7 @@ public class MentorController {
 	
 	//REST API with PathVariable  {id}=URI Template Variable Delete request
 	
-	@DeleteMapping("/mentor/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteMapping(@PathVariable int id) {
 		System.out.println(id);
 		return ResponseEntity.ok("Mentor delete successfully");
