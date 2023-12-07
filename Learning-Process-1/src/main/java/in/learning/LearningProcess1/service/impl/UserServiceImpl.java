@@ -1,5 +1,6 @@
 package in.learning.LearningProcess1.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,12 @@ public class UserServiceImpl implements UserService{
 	public User getUserById(int id) {
 		Optional<User> optionalUser=userRepository.findById(id);
 		return optionalUser.get();
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		return userRepository.findAll();
+		
 	}
 
 }

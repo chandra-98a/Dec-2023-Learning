@@ -1,5 +1,7 @@
 package in.learning.LearningProcess1.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,5 +39,14 @@ public class UserController {
 	public ResponseEntity<User> getUserById(@PathVariable int id){
 		User user=userService.getUserById(id);
 		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
+	
+	
+	//get all users http://localhost:8080/user
+	@GetMapping
+	public ResponseEntity<List<User>> getAllUsers(){
+		List<User> user=userService.getAllUsers();
+		return new ResponseEntity<>(user,HttpStatus.OK);
+		
 	}
 }
