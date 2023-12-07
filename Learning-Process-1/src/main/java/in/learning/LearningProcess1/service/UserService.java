@@ -5,4 +5,5 @@ import in.learning.LearningProcess1.entity.User;
 public interface UserService {
 
 	User createUser(User user);
+	User getUserById(int id);
 }
