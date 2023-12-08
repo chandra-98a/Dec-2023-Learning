@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>in.learning</groupId>
-	<artifactId>Learning-Process-1</artifactId>
+	<artifactId>Testing-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Learning-Process-1</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Testing-1</name>
+	<description>Demo project for Spring Boot Unit Testing</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -27,8 +27,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -41,7 +41,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
 	</dependencies>
 
 	<build>
